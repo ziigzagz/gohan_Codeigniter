@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <div class="card-body">
 
                                 <div class="mb-3 ms-1">
-                                    <table class="table table-striped">
+                                    <table class="table table-striped" id="example1">
                                         <thead>
                                             <tr>
                                                 <th>Image</th>
@@ -41,60 +41,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="beef">
 
-
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="chicken">
-                                        <img src="images\assets\CHIC.png" alt="" height="25px">
-                                        <label class="form-check-label" for="chicken">
-                                            ไก่
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="eggs">
-                                        <img src="images\assets\EGGS.png" alt="" height="25px">
-                                        <label class="form-check-label" for="eggs">
-                                            ไข่
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="pork">
-                                        <img src="images\assets\PORK.png" alt="" height="25px">
-                                        <label class="form-check-label" for="pork">
-                                            หมู
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="shrm">
-                                        <img src="images\assets\SHIM.png" alt="" height="25px">
-                                        <label class="form-check-label" for="shrm">
-                                            กุ้ง
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="fish">
-                                        <img src="images\assets\FISH.png" alt="" height="25px">
-                                        <label class="form-check-label" for="fish">
-                                            ปลา
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="pumk">
-                                        <img src="images\assets\PUMK.png" alt="" height="25px">
-                                        <label class="form-check-label" for="pumk">
-                                            ฟักทอง
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="shel">
-                                        <img src="images\assets\SHEL.png" alt="" height="25px">
-                                        <label class="form-check-label" for="shel">
-                                            หอยแมลงภู่
-                                        </label>
-                                    </div>
                                 </div>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -110,7 +57,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                ...
+                                                <form action="MasterMixer/AddMixer" method="POST">
+                                                    <div class="mb-3">
+                                                        <label for="exampleInputEmail1" class="form-label">Username</label>
+                                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                                                        <input type="password" class="form-control" id="exampleInputPassword1">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Login</button>
+                                                </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -126,7 +83,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </div>
         </div>
     </div>
-
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
 </body>
 
 </html>
