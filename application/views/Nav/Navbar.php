@@ -51,7 +51,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
+                            <a href="MasterMixer" class="nav-link">
                                 <i class="fas fa-edit"></i>
                                 <p>Master Mixer</p>
                             </a>
