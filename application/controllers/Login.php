@@ -16,4 +16,8 @@ class Login extends CI_Controller
         $this->load->view('js');
         $this->load->view('Login/Login_page.php');
     }
+    public function checklogin()
+    {
+        echo "55";
+    }
 }

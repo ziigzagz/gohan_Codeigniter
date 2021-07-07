@@ -8,3 +8,4 @@
 <script src="node_modules/@fortawesome/fontawesome-free/js/all.js"></script>
 <!-- sweetalert2 -->
 <script src="node_modules/sweetalert2/dist/sweetalert2.js"></script>
+

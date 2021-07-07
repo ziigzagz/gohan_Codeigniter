@@ -12,7 +12,6 @@
         <div class="row">
             <div class="col">
                 <a href="index3.html" class="brand-link">
-
                 </a>
             </div>
         </div>
@@ -53,19 +52,19 @@
                         </li>
                         <li class="nav-item">
                             <a href="./index3.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-edit"></i>
                                 <p>Master Mixer</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="login" class="nav-link">
-                            <i class="fas fa-sign-in-alt"></i>
+                                <i class="fas fa-sign-in-alt"></i>
                                 <p>Log In</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link text-danger">
-                            <i class="fas fa-sign-out-alt"></i>
+                                <i class="fas fa-sign-out-alt"></i>
                                 <p>Log out</p>
                             </a>
                         </li>
