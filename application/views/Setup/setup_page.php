@@ -11,84 +11,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        <nav class="main-header navbar navbar-expand navbar-dark">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-            </ul>
-        </nav>
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <a href="index3.html" class="brand-link">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Iffan H. (640048)</a>
-                    </div>
-                </div>
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item menu-open">
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="booking" class="nav-link active">
-                                        <i class="fas fa-clipboard-check"></i>
-                                        <p>Booking</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="setup" class="nav-link">
-                                        <i class="fas fa-cogs"></i>
-                                        <p>Setup</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="menuset" class="nav-link">
-                                        <i class="fas fa-tasks"></i>
-                                        <p>Menu Set</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link">
-                                        <i class="fas fa-edit"></i>
-                                        <p>Master Mixer</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="login" class="nav-link">
-                                        <i class="fas fa-sign-in-alt"></i>
-                                        <p>Log In</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link text-danger">
-                                        <i class="fas fa-sign-out-alt"></i>
-                                        <p>Log out</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
+        <?php include_once(APPPATH . 'views/Nav/Navbar.php'); ?>
         <div class="content-wrapper" style="min-height: 100%;">
             <div class="container">
                 <div class="row">
@@ -123,8 +46,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ข้าวไก่กรอบ">
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="formGroupExampleInput2" class="form-label">ชื่ออาหาร (ภาษาญี่ปุ่น)</label>
+                                                                    <label for="formGroupExampleInput2" class="form-label">Menu (Japan)</label>
                                                                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="ガイトートライス">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="exampleInputPassword1" class="form-label">Detail</label>
+                                                                    <textarea name="" class="form-control" id="" rows="2"></textarea>
                                                                 </div>
                                                                 <div class="mb-3 ms-1">
                                                                     <div class="form-check">
@@ -139,7 +66,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                             หมู
                                                                         </label>
                                                                     </div>
-
                                                                     <div class="form-check">
                                                                         <input class="form-check-input" type="checkbox" value="" id="beef">
                                                                         <label class="form-check-label" for="beef">
@@ -154,8 +80,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                     </div>
                                                                     <div class="">
                                                                         <label for="formGroupExampleInput2" class="form-label">ราคา (THB)</label>
-                                                                        <input type="number" min="0" class="form-control" id="formGroupExampleInput2" placeholder="">
+                                                                        <input type="number" min="0" class="form-control text-end" max="100" id="formGroupExampleInput2" placeholder="">
                                                                     </div>
+
                                                                 </div>
                                                                 <div class="input-group">
                                                                     <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/png, image/jpeg">
@@ -184,9 +111,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="card p-3 bg-success">
-                                        <label class="mx-auto">ก๋วยเตี๋ยว 麺料理 </label>
-                                    </div>
+
                                     <?php for ($i = 0; $i < 10; ++$i) { ?>
                                         <div class="col-3">
                                             <div class="card">
@@ -218,7 +143,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <script>
@@ -245,12 +169,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         error: function(xhr, status, error) {
                             console.error(9);
                         }
-
                     });
                 }
             })
         }
     </script>
+    <!-- <script>
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Login Complete',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    </script> -->
 </body>
 
 </html>

@@ -18,6 +18,6 @@ class Login extends CI_Controller
     }
     public function checklogin()
     {
-        echo "55";
+        header("Refresh:0; url=../setup");
     }
 }

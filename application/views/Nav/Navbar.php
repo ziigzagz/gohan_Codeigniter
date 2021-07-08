@@ -38,14 +38,9 @@
                                 <p>Booking</p>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="setup" class="nav-link">
-                                <i class="fas fa-cogs"></i>
-                                <p>Setup</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="menuset" class="nav-link">
+                            <a href="Setup" class="nav-link">
                                 <i class="fas fa-tasks"></i>
                                 <p>Menu Set</p>
                             </a>
@@ -63,7 +58,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link text-danger">
+                            <a href="login" class="nav-link text-danger">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <p>Log out</p>
                             </a>

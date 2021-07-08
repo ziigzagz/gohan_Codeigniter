@@ -6,34 +6,39 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gohan 2</title>
 </head>
 
 <body>
-    <div class="wrapper">
-        <?php include_once(APPPATH . 'views/Nav/Navbar.php'); ?>
-        <div class="content-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 mx-auto mt-3">
-                        <div class="card">
-                            <div class="card-header">
-                                login
+    <div class="container">
+        <div class="row text-center text-white mt-5 ">
+            <div class="typewriter col-md-3  mx-auto">
+                <h1>GOHAN V.2</h1>
+            </div>
+        </div>
+        <div class="row ">
+
+
+            <div class="col-md-6 mx-auto mt-5">
+                <div class="card shadow bg-white rounded card-login">
+                    <div class="card-header text-center p-5">
+                        <img src="images\Logo\ATC-Full.png" alt="No image" srcset="" height="100" class="img-fluid">
+                    </div>
+                    <div class="card-body text-center">
+                        <form action="Login/checklogin" method="POST">
+                            <div class="mb-3">
+
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off" placeholder="username">
                             </div>
-                            <div class="card-body">
-                                <form action="Login/checklogin" method="POST">
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Username</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Login</button>
-                                </form>
+                            <div class="mb-3">
+
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password">
                             </div>
-                        </div>
+                            <button type="submit" class="btn btn-info">Login</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ class MasterMixer extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // $this->load->model('News_Model');
+        $this->load->model('MasterMixerModel');
         date_default_timezone_set("Asia/Bangkok");
     }
 
@@ -14,7 +14,19 @@ class MasterMixer extends CI_Controller
     {
         $this->load->view('css');
         $this->load->view('js');
-        $this->load->view('Setup\Master_mixer_.php');
+        $data = array('result' => $this->MasterMixerModel->get_mixer());
+        $this->load->view('Setup\Master_mixer.php', $data);
     }
-
+    public function AddMixer()
+    {
+        $data = $this->MasterMixerModel->insert_mixer();
+        echo "*-*-*".gettype($data);
+        die();
+        if ($data) {
+            header("Refresh:0; url=../MasterMixer");
+        } else {
+            echo "else";
+           
+        }
+    }
 }
