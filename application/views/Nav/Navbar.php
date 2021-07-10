@@ -7,17 +7,17 @@
     </ul>
 </nav>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <div class="p-3">
+        <img src="images\Logo\ATC-Full.png" alt="" class="img-fluid">
+    </div>
     <!-- Brand Logo -->
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <a href="index3.html" class="brand-link">
-                </a>
-            </div>
+        <div class="row brand-link">
         </div>
     </div>
     <!-- Sidebar -->
     <div class="sidebar">
+
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
