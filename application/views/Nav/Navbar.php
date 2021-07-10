@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="login" class="nav-link text-danger">
+                            <a href="logout" class="nav-link text-danger">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <p>Log out</p>
                             </a>

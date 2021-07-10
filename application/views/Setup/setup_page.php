@@ -119,7 +119,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                     header 1
                                                 </div>
                                                 <div class="card-body">
-                                                    999
+                                                   <img src="images\friday\ก๋วยเตี๋ยว\ก๋วยเตี๋ยวหมูตุ๋น.jpg" class="img-fluid" alt="" srcset="">
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="row">

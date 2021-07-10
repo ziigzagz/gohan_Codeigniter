@@ -24,7 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://10.17.2.3:8088/gohan/';
-
+// http://10.17.2.3:8088/gohan/MasterMixer/
+// http://10.17.2.3:8088/gohan/MasterMixer
 /*
 |--------------------------------------------------------------------------
 | Index File
