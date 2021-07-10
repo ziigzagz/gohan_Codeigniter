@@ -41,13 +41,13 @@
 
                         <li class="nav-item">
                             <a href="Setup" class="nav-link">
-                                <i class="fas fa-tasks"></i>
+                                <i class="fas fa-hamburger"></i>
                                 <p>Menu Set</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="MasterMixer" class="nav-link">
-                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-bacon"></i>
                                 <p>Master Mixer</p>
                             </a>
                         </li>
