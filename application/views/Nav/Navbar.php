@@ -40,7 +40,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="Setup" class="nav-link">
+                            <a href="setup" class="nav-link">
                                 <i class="fas fa-hamburger"></i>
                                 <p>Menu Set</p>
                             </a>

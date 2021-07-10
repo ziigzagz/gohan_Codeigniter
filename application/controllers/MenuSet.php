@@ -21,10 +21,10 @@ class MenuSet extends CI_Controller
         $data = $this->MasterMenu->insert_master_menu();
         if ($data === true) {
             $this->session->set_tempdata('status_insert', 'success', 3);
-            header("Refresh:0; url=../MasterMixer");
-        } else if ($data == "23000/2627") {
+            header("Refresh:0; url=../MasterMenu");
+        } else {
             $this->session->set_tempdata('status_insert', 'fail', 3);
-            header("Refresh:0; url=../MasterMixer");
-        }
+            header("Refresh:0; url=../MasterMenu");
+        } 
     }
 }

@@ -14,7 +14,6 @@ class Logout extends CI_Controller
     {
         session_destroy();
         header("Refresh:0; url=./login");
-
     }
   
 }

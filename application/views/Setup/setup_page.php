@@ -31,7 +31,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         </button>
 
                                         <!-- Modal -->
-                                        <?php echo form_open_multipart('MasterMenu/insert_master_menu'); ?>
+                                        <?php echo form_open_multipart('Setup/insert'); ?>
                                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -44,8 +44,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                             <div class="row">
                                                                 <div class="mb-3">
                                                                     <label for="formGroupExampleInput" class="form-label">Type</label>
-                                                                    <select class="form-select" aria-label="Default select example">
-                                                                        <option value="maincourse">Main courses</option>
+                                                                    <select class="form-select" aria-label="Default select example" name="type" id="type">
+                                                                        <option value="maincourse" selected>Main courses</option>
                                                                         <option value="sidedish">Side dish</option>
                                                                         <option value="noodle">Noodle </option>
                                                                         <option value="dessert">Dessert</option>
@@ -54,29 +54,30 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                                                                 <div class="mb-3">
                                                                     <label for="formGroupExampleInput" class="form-label">Menu (Thai)</label>
-                                                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ข้าวไก่กรอบ">
+                                                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ข้าวไก่กรอบ" name="name_th" value="th" required>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="formGroupExampleInput2" class="form-label">Menu (Japan)</label>
-                                                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="ガイトートライス">
+                                                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="ガイトートライス" name="name_jp" value="jp" required>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="exampleInputPassword1" class="form-label">Detail (Japan)</label>
-                                                                    <textarea name="" class="form-control" id="" rows="2"></textarea>
+                                                                    <textarea name="" class="form-control" id="" rows="2" name="detail">dt</textarea>
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="exampleInputPassword1" class="form-label">Spicy</label>
-                                                                    <select class="form-select" aria-label="Default select example">
-                                                                        <option value="maincourse">Main courses</option>
-                                                                        <option value="sidedish">Side dish</option>
-                                                                        <option value="noodle">Noodle </option>
-                                                                        <option data-thumbnail="images\Logo\aoyama.png">Safari</option>
-                                                                        <option value="dessert">Dessert</option>
+                                                                    <label for="exampleInputPassword1" class="form-label">Spicy Level</label>
+                                                                    <select class="form-select" aria-label="Default select example" name="spicy">
+                                                                        <option value="0">0</option>
+                                                                        <option value="1" selected>1</option>
+                                                                        <option value="2">2 </option>
+                                                                        <option value="3">3</option>
+                                                                        <option value="4">4</option>
+                                                                        <option value="5">5</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="formGroupExampleInput2" class="form-label">ราคา (THB)</label>
-                                                                    <input type="number" min="0" class="form-control text-end" max="100" id="formGroupExampleInput2" placeholder="">
+                                                                    <input type="number" min="0" class="form-control text-end" max="100" id="price" placeholder="" name="price" value="20" required>
                                                                 </div>
                                                                 <div class="mb-3 ms-1 ">
                                                                     <div class="form-check">
@@ -87,15 +88,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                     </div>
                                                                 </div>
                                                                 <div class="input-group">
-                                                                    <!-- <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/png, image/jpeg"> -->
                                                                     <input type="file" name="userfile" class="form-control" size="20000000" required />
-                                                                    <button class="btn btn-secondary" type="button" id="inputGroupFileAddon04">Button</button>
+
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-outline-success">Save changes</button>
+                                                            <button type="submit" class="btn btn-outline-success">Save</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -141,9 +141,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         </div>
                                     <?php } ?>
                                 </div>
-                                <form action="MenuSet/insert" method="post">
+                                <!-- <form action="MenuSet/insert" method="post">
                                     <button class="btn btn-info">insert</button>
-                                </form>
+                                </form> -->
                             </div>
                         </div>
                     </div>
@@ -168,15 +168,58 @@ defined('BASEPATH') or exit('No direct script access allowed');
             });
         }
     </script>
-    <!-- <script>
-        Swal.fire({
-            position: 'top-center',
-            icon: 'success',
-            title: 'Login Complete',
-            showConfirmButton: false,
-            timer: 1500
-        })
-    </script> -->
+    <script>
+        // ==========================
+        //     CHECK STATUS INSERT
+        // ==========================
+        <?php if (isset($_SESSION['status_insert'])) {
+            if ($_SESSION['status_insert'] == 'fail') {
+                echo "Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Mixer code is already!',
+                showConfirmButton: false,
+                timer: 1800
+              })";
+            } else if ($_SESSION['status_insert'] == 'success') {
+                echo "Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Add new menu complete!',
+                showConfirmButton: false,
+                timer: 1800
+              })";
+            }
+        }
+        // ==========================
+        //     CHECK STATUS UPDATE
+        // ==========================
+        if (isset($_SESSION['status_update'])) {
+            if ($_SESSION['status_update'] == 'success') {
+                echo "Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Update menu complete!',
+                    showConfirmButton: false,
+                    timer: 1800
+                  })";
+            }
+        }
+        // ==========================
+        //     CHECK STATUS DELETE
+        // ==========================
+        if (isset($_SESSION['status_delete'])) {
+            if ($_SESSION['status_delete'] == 'success') {
+                echo "Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Update menu complete!',
+                    showConfirmButton: false,
+                    timer: 1800
+                  })";
+            }
+        } ?>
+    </script>
 </body>
 
 </html>
