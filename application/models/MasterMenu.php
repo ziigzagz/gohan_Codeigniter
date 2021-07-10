@@ -1,23 +1,21 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class MasterMixerModel extends CI_Model
+class MasterMenu extends CI_Model
 {
 	private $error_code = [];
-	public function get_mixer()
+	public function get_menu()
 	{
 		$query = $this->db->query(
-			"SELECT * FROM TB_GOHAN_MIXER;"
+			"SELECT * FROM TB_GOHAN_MASTER;"
 		);
 		return $query->result();
 	}
 
-	public function delete_mixer()
+	public function insert_master_menu()
 	{
-		$mixer_code = $this->input->post('mixer_code');
-		// echo $mixer_code . $meat_th . $meat_jp;
 		try {
-			$sql = "DELETE FROM TB_GOHAN_MIXER WHERE Mixer_Code = '$mixer_code';";
+			$sql = "exec SP_GOHAN_INSERT 'A','ไทย',N'jjjj','',2,'PIG',120,''";
 			if (!$this->db->simple_query($sql)) {
 				$error = $this->db->error(); // Has keys 'code' and 'message'
 				print_r($error);

@@ -31,6 +31,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         </button>
 
                                         <!-- Modal -->
+                                        <?php echo form_open_multipart('MasterMenu/insert_master_menu'); ?>
                                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -41,6 +42,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                     <div class="modal-body">
                                                         <div class="container">
                                                             <div class="row">
+                                                                <div class="mb-3">
+                                                                    <label for="formGroupExampleInput" class="form-label">Type</label>
+                                                                    <select class="form-select" aria-label="Default select example">
+                                                                        <option value="maincourse">Main courses</option>
+                                                                        <option value="sidedish">Side dish</option>
+                                                                        <option value="noodle">Noodle
+                                                                            <img src="https://glot.io/static/img/c.svg?etag=ZaoLBh_p" alt="">
+                                                                        </option>
+                                                                        <option value="dessert" data-img-src="https://glot.io/static/img/c.svg?etag=ZaoLBh_p">Dessert</option>
+                                                                    </select>
+                                                                </div>
+
                                                                 <div class="mb-3">
                                                                     <label for="formGroupExampleInput" class="form-label">Menu (Thai)</label>
                                                                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ข้าวไก่กรอบ">
@@ -53,59 +66,41 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                     <label for="exampleInputPassword1" class="form-label">Detail</label>
                                                                     <textarea name="" class="form-control" id="" rows="2"></textarea>
                                                                 </div>
-                                                                <div class="mb-3 ms-1">
+                                                                <div class="">
+                                                                    <label for="formGroupExampleInput2" class="form-label">ราคา (THB)</label>
+                                                                    <input type="number" min="0" class="form-control text-end" max="100" id="formGroupExampleInput2" placeholder="">
+                                                                </div>
+                                                                <div class="mb-3 ms-1 ">
                                                                     <div class="form-check">
                                                                         <input class="form-check-input" type="checkbox" value="" id="chicken">
                                                                         <label class="form-check-label" for="chicken">
                                                                             ไก่
                                                                         </label>
                                                                     </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" value="" id="pig">
-                                                                        <label class="form-check-label" for="pig">
-                                                                            หมู
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" value="" id="beef">
-                                                                        <label class="form-check-label" for="beef">
-                                                                            เนื้อ
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" value="" id="shrimp">
-                                                                        <label class="form-check-label" for="beef">
-                                                                            กุ้ง
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <label for="formGroupExampleInput2" class="form-label">ราคา (THB)</label>
-                                                                        <input type="number" min="0" class="form-control text-end" max="100" id="formGroupExampleInput2" placeholder="">
-                                                                    </div>
-
                                                                 </div>
                                                                 <div class="input-group">
                                                                     <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/png, image/jpeg">
-                                                                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
+                                                                    <button class="btn btn-secondary" type="button" id="inputGroupFileAddon04">Button</button>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-outline-success">Save changes</button>
+                                                        </div>
 
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary">Save changes</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        </form>
                                     </div>
                                     <div class="col-md-3">
                                         <select class="form-select" aria-label="Default select example">
-                                            <option value="1">Main courses</option>
-                                            <option value="2">Side dish</option>
-                                            <option value="2">Noodle</option>
-                                            <option value="2">Dessert</option>
+                                            <option value="maincourse">Main courses</option>
+                                            <option value="sidedish">Side dish</option>
+                                            <option value="noodle">Noodle</option>
+                                            <option value="dessert">Dessert</option>
                                         </select>
                                     </div>
                                 </div>
@@ -138,6 +133,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         </div>
                                     <?php } ?>
                                 </div>
+                                <form action="MenuSet/insert" method="post">
+                                    <button class="btn btn-info">insert</button>
+                                </form>
                             </div>
                         </div>
                     </div>
