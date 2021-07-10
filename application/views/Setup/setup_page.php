@@ -177,7 +177,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 echo "Swal.fire({
                 position: 'center',
                 icon: 'error',
-                title: 'Mixer code is already!',
+                title: 'Menu code is already!',
                 showConfirmButton: false,
                 timer: 1800
               })";
@@ -204,12 +204,31 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     timer: 1800
                   })";
             }
+            if ($_SESSION['status_update'] == 'fail') {
+                echo "Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Update menu complete!',
+                    showConfirmButton: false,
+                    timer: 1800
+                  })";
+            }
         }
+
         // ==========================
         //     CHECK STATUS DELETE
         // ==========================
         if (isset($_SESSION['status_delete'])) {
             if ($_SESSION['status_delete'] == 'success') {
+                echo "Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Update menu complete!',
+                    showConfirmButton: false,
+                    timer: 1800
+                  })";
+            }
+            if ($_SESSION['status_delete'] == 'fail') {
                 echo "Swal.fire({
                     position: 'center',
                     icon: 'success',
