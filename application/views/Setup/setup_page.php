@@ -100,26 +100,26 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <select class="form-select" aria-label="Default select example">
-                                            <option value="1">Monday</option>
-                                            <option value="2">Tuesday</option>
-                                            <option value="2">Wednesday</option>
-                                            <option value="2">Thursday</option>
-                                            <option value="2">Friday</option>
+                                            <option value="1">Main courses</option>
+                                            <option value="2">Side dish</option>
+                                            <option value="2">Noodle</option>
+                                            <option value="2">Dessert</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-
                                     <?php for ($i = 0; $i < 10; ++$i) { ?>
-                                        <div class="col-3">
+                                        <div class="col-lg-3 col-md-6">
                                             <div class="card">
                                                 <div class="card-header">
                                                     header 1
                                                 </div>
                                                 <div class="card-body">
-                                                   <img src="images\friday\ก๋วยเตี๋ยว\ก๋วยเตี๋ยวหมูตุ๋น.jpg" class="img-fluid" alt="" srcset="">
+                                                    <div class="row">
+                                                        <img src="images\friday\ก๋วยเตี๋ยว\ก๋วยเตี๋ยวหมูตุ๋น.jpg" class="img-fluid mx-auto" alt="" srcset="">
+                                                    </div>
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="row">
@@ -146,32 +146,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
     </div>
     <script>
-        function test() {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: "POST",
-                        url: 'login/checklogin',
-                        // data: {
-                        //     name: 'John'
-                        // },
-                        success: function(data) {
-                            console.log(data);
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(9);
-                        }
-                    });
+        function getMenu() {
+            $.ajax({
+                type: "POST",
+                url: 'script.php',
+                data: {
+                    name: 'John'
+                },
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr);
                 }
-            })
+            });
         }
     </script>
     <!-- <script>

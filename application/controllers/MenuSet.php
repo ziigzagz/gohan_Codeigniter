@@ -16,4 +16,9 @@ class MenuSet extends CI_Controller
         $this->load->view('js');
         $this->load->view('MenuSet\MenuSet_page.php');
     }
+    public function get_menu_setup()
+    {
+        
+        # code...
+    }
 }
