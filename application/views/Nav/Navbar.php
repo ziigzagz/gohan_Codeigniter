@@ -21,10 +21,12 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+
+
             </div>
             <div class="info">
-                <a href="#" class="d-block">Iffan H. (640048) <?php echo gettype($this->router->class);?></a>
+                
+                <a href="#" class="d-block">Username : Iffan H. (640048)</a>
             </div>
         </div>
         <!-- Sidebar Menu -->
