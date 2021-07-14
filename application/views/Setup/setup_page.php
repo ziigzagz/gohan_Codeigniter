@@ -184,12 +184,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                                         </div>
                                                                                         <div class="mb-3 ms-1 ">
                                                                                             <?php
-                                                                                            $arr_mixer_menu = explode(",", $item);
+                                                                                            // $arr_mixer_menu = explode(",", $item);
                                                                                             foreach ($mixer as $item_mixer) { ?>
                                                                                                 <div class="form-check">
                                                                                                     <input class="form-check-input" type="checkbox" name="mixer[<?php print_r($item_mixer->Mixer_Code) ?>]" id="<?php print_r($item_mixer->Mixer_Code) ?> <?php ?>"
                                                                                                     <?php 
-                                                                                                    
+                                                                                                    // strpos($mystring, $findme);
+                                                                                                    // $item_mixer->Mixer_Code
+                                                                                                    if(strpos($item->Mixer.',', $item_mixer->Mixer_Code)){
+                                                                                                        echo $item_mixer->Mixer_Code;
+                                                                                                    }
                                                                                                     ?>
                                                                                                     >
                                                                                                     <label class="form-check-label" for="<?php print_r($item_mixer->Mixer_Code) ?>">
