@@ -21,7 +21,7 @@ class MasterMenu extends CI_Model
 	public function get_menu()
 	{
 		$query = $this->db->query(
-			"SELECT * FROM TB_GOHAN_MASTER order by Price asc;"
+			"SELECT * FROM TB_GOHAN_MASTER where show = '1' order by Price asc;"
 		);
 		return $query->result();
 	}
@@ -56,7 +56,7 @@ class MasterMenu extends CI_Model
 				}
 				$sql = "exec SP_GOHAN_INSERT '$type','$name_th',N'$name_jp','$detail',$spicy,'$mixer',$price,'$img'";
 				if (!$this->db->simple_query($sql)) {
-					$error = $this->db->error(); // Has keys 'code' and 'message'
+					$error = $this->db->error();
 					print_r($error);
 					return $error['code'];
 				}
@@ -66,8 +66,92 @@ class MasterMenu extends CI_Model
 			}
 		}
 	}
-	public function delete_master_menu($id)
+	public function delete_master_menu()
 	{
+		$Menu_Code = $this->input->post('Menu_Code');
+		$M_Group = $this->input->post('M_Group');
+		try {
+			$sql = "UPDATE TB_GOHAN_MASTER SET show = 0 WHERE Menu_Code = '$Menu_Code' and M_Group = '$M_Group';";
+			if (!$this->db->simple_query($sql)) {
+				$error = $this->db->error();
+				print_r($error);
+				return $error['code'];
+			}
+			return true;
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	public function update_master_menu()
+	{
+		$Menu_Code = $this->input->post('Menu_Code');
+		$M_Group = $this->input->post('M_Group');
+		$type = $this->input->post('type');
+		$name_th = $this->input->post('name_th');
+		$name_jp = $this->input->post('name_jp');
+		$detail = $this->input->post('detail');
+		$spicy = $this->input->post('spicy');
+		$price = $this->input->post('price');
+		$mixer = "";
+		if (isset($_POST['mixer'])) {
+			$myboxes = $_POST['mixer'];
+			foreach (array_keys($myboxes) as $item) {
+				$mixer .= $item . ",";
+			}
+		}
 		
+		$img_upload = 0;
+		if ($this->upload->do_upload('userfile') != null) {
+			$img_upload = 1;
+		}
+		if ($img_upload) {
+			if (!$this->upload->do_upload('userfile')) {
+				return false;
+			} else {
+				try {
+					$data = $this->upload->data();
+					$img = $data['file_name'];
+					if ($type == "maincourse") {
+						$type = 'A';
+					} else if ($type == "sidedish") {
+						$type = 'B';
+					} else if ($type == "noodle") {
+						$type = 'C';
+					} else if ($type == "dessert") {
+						$type = 'D';
+					}
+					$sql = "UPDATE TB_GOHAN_MASTER SET M_Group = '$type' , Name_Th = '$name_th' ,Name_Jp = N'$name_jp',Detail_Jp = N'$detail',Spicy = '$spicy' , Mixer = '$mixer' , Price = '$price' ,Menu_Pic = '$img'  WHERE Menu_code = '$Menu_Code' and M_Group = '$M_Group';";
+					if (!$this->db->simple_query($sql)) {
+						$error = $this->db->error();
+						print_r($error);
+						return $error['code'];
+					}
+					return true;
+				} catch (Exception $e) {
+					return false;
+				}
+			}
+		}else{
+			try {
+				if ($type == "maincourse") {
+					$type = 'A';
+				} else if ($type == "sidedish") {
+					$type = 'B';
+				} else if ($type == "noodle") {
+					$type = 'C';
+				} else if ($type == "dessert") {
+					$type = 'D';
+				}
+				$sql = "UPDATE TB_GOHAN_MASTER SET M_Group = '$type' , Name_Th = '$name_th' ,Name_Jp = N'$name_jp',Detail_Jp = N'$detail',Spicy = '$spicy' , Mixer = '$mixer' , Price = '$price'  WHERE Menu_code = '$Menu_Code' and M_Group = '$M_Group';";
+				if (!$this->db->simple_query($sql)) {
+					$error = $this->db->error();
+					print_r($error);
+					return $error['code'];
+				}
+				return true;
+			} catch (Exception $e) {
+				return false;
+			}
+		}
 	}
 }
