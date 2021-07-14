@@ -51,7 +51,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                         <option value="dessert">Dessert</option>
                                                                     </select>
                                                                 </div>
-
                                                                 <div class="mb-3">
                                                                     <label for="formGroupExampleInput" class="form-label">Menu (Thai)</label>
                                                                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ข้าวไก่กรอบ" name="name_th" value="th" required>
@@ -61,8 +60,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="ガイトートライス" name="name_jp" value="jp" required>
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="exampleInputPassword1" class="form-label">Detail (Japan)</label>
-                                                                    <textarea name="" class="form-control" id="" rows="2" name="detail">dt</textarea>
+                                                                    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  name="detail">dt</textarea>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="exampleInputPassword1" class="form-label">Spicy Level</label>
@@ -75,21 +74,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                         <option value="5">5</option>
                                                                     </select>
                                                                 </div>
+                                                                <div class="mb-3 ms-1 ">
+                                                                    <?php
+                                                                    foreach ($mixer as $item) { ?>
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="checkbox" name="mixer[<?php print_r($item->Mixer_Code) ?>]" id="<?php print_r($item->Mixer_Code) ?>">
+                                                                            <label class="form-check-label" for="<?php print_r($item->Mixer_Code) ?>">
+                                                                                <?php print_r($item->Name) ?> (<?php print_r($item->Name_JP) ?>)
+                                                                            </label>
+                                                                        </div>
+                                                                    <?php } ?>
+                                                                </div>
                                                                 <div class="mb-3">
                                                                     <label for="formGroupExampleInput2" class="form-label">ราคา (THB)</label>
                                                                     <input type="number" min="0" class="form-control text-end" max="100" id="price" placeholder="" name="price" value="20" required>
                                                                 </div>
-                                                                <div class="mb-3 ms-1 ">
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" value="" id="chicken">
-                                                                        <label class="form-check-label" for="chicken">
-                                                                            ไก่
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
                                                                 <div class="input-group">
                                                                     <input type="file" name="userfile" class="form-control" size="20000000" required />
-
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -113,20 +114,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <?php for ($i = 0; $i < 10; ++$i) { ?>
+                                    <?php
+                                    foreach ($menu as $item) { ?>
                                         <div class="col-lg-3 col-md-6">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    header 1
+                                                    <?php print_r($item->Name_Th); ?> <br>( <?php print_r($item->Name_Jp); ?>)
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <img src="images\friday\ก๋วยเตี๋ยว\ก๋วยเตี๋ยวหมูตุ๋น.jpg" class="img-fluid mx-auto" alt="" srcset="">
+                                                        <img src="images\menu\<?php print_r($item->Menu_Pic); ?>" class="img-fluid mx-auto" alt="images\menu\noPhoto.png" srcset="">
                                                     </div>
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="row">
-                                                        <div class="col-6">25 THB</div>
+                                                        <div class="col-6"> <?php print_r($item->Price); ?> THB</div>
                                                         <div class="col-6 text-end">
                                                             <button class="btn btn-warning">
                                                                 <i class="fas fa-edit"></i>

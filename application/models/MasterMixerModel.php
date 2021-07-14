@@ -7,7 +7,7 @@ class MasterMixerModel extends CI_Model
 	public function get_mixer()
 	{
 		$query = $this->db->query(
-			"SELECT * FROM TB_GOHAN_MIXER;"
+			"SELECT * FROM TB_GOHAN_MIXER order by Name asc;"
 		);
 		return $query->result();
 	}

@@ -18,6 +18,13 @@ class MasterMenu extends CI_Model
 		$this->load->library('upload', $config);
 		$this->upload->initialize($config);
 	}
+	public function get_menu()
+	{
+		$query = $this->db->query(
+			"SELECT * FROM TB_GOHAN_MASTER order by Price asc;"
+		);
+		return $query->result();
+	}
 	public function insert_master_menu()
 	{
 		$type = $this->input->post('type');
@@ -25,13 +32,17 @@ class MasterMenu extends CI_Model
 		$name_jp = $this->input->post('name_jp');
 		$detail = $this->input->post('detail');
 		$spicy = $this->input->post('spicy');
-		$mixer = $this->input->post('spicy');
+		$myboxes = $_POST['mixer'];
+		$mixer = "";
+		foreach (array_keys($myboxes) as $item) {
+			$mixer .= $item . ",";
+		}
+
 		$price = $this->input->post('price');
 		if (!$this->upload->do_upload('userfile')) {
 			return false;
 		} else {
 			try {
-
 				$data = $this->upload->data();
 				$img = $data['file_name'];
 				if ($type == "maincourse") {
@@ -54,5 +65,9 @@ class MasterMenu extends CI_Model
 				return false;
 			}
 		}
+	}
+	public function delete_master_menu($id)
+	{
+		
 	}
 }
