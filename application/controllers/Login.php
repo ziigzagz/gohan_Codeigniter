@@ -6,7 +6,7 @@ class Login extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // $this->load->model('News_Model');
+        $this->load->model('User');
         date_default_timezone_set("Asia/Bangkok");
     }
 
@@ -18,6 +18,13 @@ class Login extends CI_Controller
     }
     public function checklogin()
     {
-        header("Refresh:0; url=../setup");
+        $data = $this->User->checklogin();
+        if ($data === true) {
+            $this->session->set_tempdata('status_login', 'success', 3);
+            header("Refresh:0; url=../setup");
+        } else {
+            $this->session->set_tempdata('status_login', 'fail', 3);
+            header("Refresh:0; url=../setup");
+        }
     }
 }

@@ -48,11 +48,9 @@ class Setup extends CI_Controller
     {
         $data = $this->MasterMenu->update_master_menu();
         if ($data === true) {
-            echo "if";
             $this->session->set_tempdata('status_update', 'success', 3);
             header("Refresh:0; url=../setup");
         } else {
-            echo "else";
             $this->session->set_tempdata('status_update', 'fail', 3);
             header("Refresh:0; url=../setup");
         }

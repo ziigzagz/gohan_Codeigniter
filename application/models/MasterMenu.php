@@ -37,7 +37,6 @@ class MasterMenu extends CI_Model
 		foreach (array_keys($myboxes) as $item) {
 			$mixer .= $item . ",";
 		}
-
 		$price = $this->input->post('price');
 		if (!$this->upload->do_upload('userfile')) {
 			return false;
@@ -99,7 +98,7 @@ class MasterMenu extends CI_Model
 				$mixer .= $item . ",";
 			}
 		}
-		
+
 		$img_upload = 0;
 		if ($this->upload->do_upload('userfile') != null) {
 			$img_upload = 1;
@@ -131,7 +130,7 @@ class MasterMenu extends CI_Model
 					return false;
 				}
 			}
-		}else{
+		} else {
 			try {
 				if ($type == "maincourse") {
 					$type = 'A';

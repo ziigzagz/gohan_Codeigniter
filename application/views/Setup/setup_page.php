@@ -45,7 +45,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                 <div class="mb-3">
                                                                     <label for="formGroupExampleInput" class="form-label">Type</label>
                                                                     <select class="form-select" aria-label="Default select example" name="type" id="type">
-                                                                        <option value="maincourse" selected>Main courses</option>
+                                                                        <option value="maincourse" >Main courses</option>
                                                                         <option value="sidedish">Side dish</option>
                                                                         <option value="noodle">Noodle </option>
                                                                         <option value="dessert">Dessert</option>
@@ -53,21 +53,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="formGroupExampleInput" class="form-label">Menu (Thai)</label>
-                                                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ข้าวไก่กรอบ" name="name_th" value="th" required>
+                                                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ข้าวไก่กรอบ" name="name_th" value="" required>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="formGroupExampleInput2" class="form-label">Menu (Japan)</label>
-                                                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="ガイトートライス" name="name_jp" value="jp" required>
+                                                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="ガイトートライス" name="name_jp" value="" required>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="detail">dt</textarea>
+                                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="detail"></textarea>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="exampleInputPassword1" class="form-label">Spicy Level</label>
                                                                     <select class="form-select" aria-label="Default select example" name="spicy">
                                                                         <option value="0">0</option>
-                                                                        <option value="1" selected>1</option>
+                                                                        <option value="1" >1</option>
                                                                         <option value="2">2 </option>
                                                                         <option value="3">3</option>
                                                                         <option value="4">4</option>
@@ -87,7 +87,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="formGroupExampleInput2" class="form-label">ราคา (THB)</label>
-                                                                    <input type="number" min="0" class="form-control text-end" max="100" id="price" placeholder="" name="price" value="20" required>
+                                                                    <input type="number" min="0" class="form-control text-end" max="100" id="price" placeholder="" name="price" value="" required>
                                                                 </div>
                                                                 <div class="input-group">
                                                                     <input type="file" name="userfile" class="form-control" size="20000000" required />
@@ -138,7 +138,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                             <!-- UPDATE Modal -->
                                                             <div class="modal fade" id="updt<?php print_r($item->Menu_Code) ?><?php print_r($item->M_Group) ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <form action="./setup/update" method="POST" enctype="multipart/form-data">
-                                                              
+
                                                                     <div class="modal-dialog">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
@@ -182,32 +182,30 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                                                 <option value="5" <?php echo $item->Spicy == 5 ? 'selected' : null ?>>5</option>
                                                                                             </select>
                                                                                         </div>
-                                                                                        <div class="mb-3 ms-1 ">
+                                                                                        <div class="mb-3 ms-1 text-start">
                                                                                             <?php
                                                                                             // $arr_mixer_menu = explode(",", $item);
                                                                                             foreach ($mixer as $item_mixer) { ?>
                                                                                                 <div class="form-check">
-                                                                                                    <input class="form-check-input" type="checkbox" name="mixer[<?php print_r($item_mixer->Mixer_Code) ?>]" id="<?php print_r($item_mixer->Mixer_Code) ?> <?php ?>"
-                                                                                                    <?php 
-                                                                                                    // strpos($mystring, $findme);
-                                                                                                    // $item_mixer->Mixer_Code
-                                                                                                    if(strpos($item->Mixer.',', $item_mixer->Mixer_Code)){
-                                                                                                        echo $item_mixer->Mixer_Code;
-                                                                                                    }
-                                                                                                    ?>
-                                                                                                    >
+                                                                                                    <input class="form-check-input" type="checkbox" name="mixer[<?php print_r($item_mixer->Mixer_Code) ?>]" id="<?php print_r($item_mixer->Mixer_Code) ?>" <?php
+                                                                                                                                                                                                                                                            $pos = strpos($item->Mixer . ',', $item_mixer->Mixer_Code);
+                                                                                                                                                                                                                                                            if (!($pos === false)) {
+                                                                                                                                                                                                                                                                echo "checked";
+                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                            ?>>
                                                                                                     <label class="form-check-label" for="<?php print_r($item_mixer->Mixer_Code) ?>">
                                                                                                         <?php print_r($item_mixer->Name) ?> (<?php print_r($item_mixer->Name_JP) ?>)
                                                                                                     </label>
+
                                                                                                 </div>
                                                                                             <?php } ?>
                                                                                         </div>
                                                                                         <div class="mb-3">
                                                                                             <label for="formGroupExampleInput2" class="form-label">ราคา (THB)</label>
-                                                                                            <input type="number" min="0" class="form-control text-end" max="100" id="price" placeholder="" name="price" value="<?php echo $item->Price?>" required>
+                                                                                            <input type="number" min="0" class="form-control text-end" max="100" id="price" placeholder="" name="price" value="<?php echo $item->Price ?>" required>
                                                                                         </div>
                                                                                         <div class="input-group">
-                                                                                            <input type="file" name="userfile" class="form-control" size="20000000"/>
+                                                                                            <input type="file" name="userfile" class="form-control" size="20000000" />
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>

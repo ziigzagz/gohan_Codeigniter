@@ -29,11 +29,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <form action="Login/checklogin" method="POST">
                             <div class="mb-3">
 
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off" placeholder="username">
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off" placeholder="username" username="username">
                             </div>
                             <div class="mb-3">
-
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password">
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" name="password">
                             </div>
                             <button type="submit" class="btn btn-info">Login</button>
                             <button type="reset" class="btn btn-danger">Reset</button>

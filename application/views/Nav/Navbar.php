@@ -24,7 +24,7 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Iffan H. (640048)</a>
+                <a href="#" class="d-block">Iffan H. (640048) <?php echo gettype($this->router->class);?></a>
             </div>
         </div>
         <!-- Sidebar Menu -->
@@ -33,26 +33,29 @@
                 <li class="nav-item menu-open">
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="booking" class="nav-link active">
+                            <a href="Booking" class="nav-link 
+                            <?php echo $this->router->class === "Booking" ? "active" : null; ?>">
                                 <i class="fas fa-clipboard-check"></i>
                                 <p>Booking</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="setup" class="nav-link">
+                            <a href="Setup" class="nav-link 
+                            <?php echo $this->router->class === "Setup" ? "active" : null; ?>">
                                 <i class="fas fa-hamburger"></i>
                                 <p>Menu Set</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="MasterMixer" class="nav-link">
+                            <a href="MasterMixer" class="nav-link
+                            <?php echo $this->router->class === "MasterMixer" ? "active" : null; ?>">
                                 <i class="fas fa-bacon"></i>
                                 <p>Master Mixer</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="login" class="nav-link">
+                            <a href="Login" class="nav-link">
                                 <i class="fas fa-sign-in-alt"></i>
                                 <p>Log In</p>
                             </a>
