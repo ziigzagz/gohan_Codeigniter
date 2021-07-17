@@ -18,12 +18,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="col  mt-3">
                         <div class="card">
                             <div class="card-header bg-info text-center">
-                                MENU
+                                MENU (<?php print_r($error) ?>)
                             </div>
-                            <div class="card-body bg-light">
+                            <div class="card-body bg-light text-start">
                                 <div class="row">
                                     <div class="col">
-
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             <i class="fas fa-plus-circle"></i>
@@ -45,7 +44,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                 <div class="mb-3">
                                                                     <label for="formGroupExampleInput" class="form-label">Type</label>
                                                                     <select class="form-select" aria-label="Default select example" name="type" id="type">
-                                                                        <option value="maincourse" >Main courses</option>
+                                                                        <option value="maincourse">Main courses</option>
                                                                         <option value="sidedish">Side dish</option>
                                                                         <option value="noodle">Noodle </option>
                                                                         <option value="dessert">Dessert</option>
@@ -60,14 +59,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="ガイトートライス" name="name_jp" value="" required>
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                                                                    <label for="exampleFormControlTextarea1" class="form-label">Detail</label>
                                                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="detail"></textarea>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="exampleInputPassword1" class="form-label">Spicy Level</label>
                                                                     <select class="form-select" aria-label="Default select example" name="spicy">
                                                                         <option value="0">0</option>
-                                                                        <option value="1" >1</option>
+                                                                        <option value="1">1</option>
                                                                         <option value="2">2 </option>
                                                                         <option value="3">3</option>
                                                                         <option value="4">4</option>
@@ -104,14 +103,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         </div>
                                         </form>
                                     </div>
+
                                     <div class="col-md-3">
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select class="form-select" aria-label="Default select example" onchange="fetchMenu()" id="menu_type" name="menu_type">
+                                            <option value="all">All</option>
                                             <option value="maincourse">Main courses</option>
                                             <option value="sidedish">Side dish</option>
                                             <option value="noodle">Noodle</option>
                                             <option value="dessert">Dessert</option>
                                         </select>
+
                                     </div>
+                                  
+
+
                                 </div>
                                 <div class="row mt-3">
                                     <?php
@@ -119,11 +124,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         <div class="col-lg-3 col-md-6">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <?php print_r($item->Name_Th); ?> <br>(<?php print_r($item->Name_Jp); ?>)
+                                                    <?php print_r($item->Name_Th); ?>
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body card-body-item">
                                                     <div class="row">
-                                                        <img src="images\menu\<?php print_r($item->Menu_Pic); ?>" class="img-fluid mx-auto" alt="" srcset=>
+                                                        <img src="<?php echo base_url() ?>images\menu\<?php print_r($item->Menu_Pic); ?>" class="img-fluid mx-auto" alt="" srcset=>
                                                     </div>
                                                 </div>
                                                 <div class="card-footer">
@@ -251,9 +256,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         </div>
                                     <?php } ?>
                                 </div>
-                                <!-- <form action="MenuSet/insert" method="post">
-                                    <button class="btn btn-info">insert</button>
-                                </form> -->
                             </div>
                         </div>
                     </div>
@@ -261,23 +263,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </div>
         </div>
     </div>
-    <script>
-        function getMenu() {
-            $.ajax({
-                type: "POST",
-                url: 'script.php',
-                data: {
-                    name: 'John'
-                },
-                success: function(data) {
-                    console.log(data);
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr);
-                }
-            });
-        }
-    </script>
     <script>
         // ==========================
         //     CHECK STATUS INSERT
@@ -348,6 +333,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
                   })";
             }
         } ?>
+    </script>
+    <script>
+        function fetchMenu() {
+            console.log(document.getElementById('menu_type').value);
+            location.href = "<?= base_url()?>Setup/type/"+document.getElementById('menu_type').value;
+            window.localStorage.setItem("page",document.getElementById('menu_type').value);
+        }
+        if(window.localStorage.getItem("page")){
+            document.getElementById('menu_type').value = window.localStorage.getItem("page");
+        }
+       
     </script>
 </body>
 

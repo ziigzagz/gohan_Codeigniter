@@ -19,12 +19,19 @@ class Login extends CI_Controller
     public function checklogin()
     {
         $data = $this->User->checklogin();
-        if ($data === true) {
+     
+        if (sizeof($data)) {
+            $user_logged_in = array(
+                'username'  => $data[0]->Username,
+                'Level'     => $data[0]->Lv,
+                'logged_in' => TRUE
+            );
             $this->session->set_tempdata('status_login', 'success', 3);
-            header("Refresh:0; url=../setup");
+            $this->session->set_userdata($user_logged_in);
+            header("Refresh:0; url=".base_url()."setup");
         } else {
             $this->session->set_tempdata('status_login', 'fail', 3);
-            header("Refresh:0; url=../setup");
+            header("Refresh:0; url=".base_url()."login");
         }
     }
 }

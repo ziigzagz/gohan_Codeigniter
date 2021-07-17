@@ -207,7 +207,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 echo "Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Update mixer complete!',
+                    title: 'DELETE mixer complete!',
                     showConfirmButton: false,
                     timer: 1800
                   })";

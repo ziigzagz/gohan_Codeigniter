@@ -30,7 +30,7 @@ class MasterMixerModel extends CI_Model
 				$meat_jp = $this->input->post('meat_jp');
 				$data = $this->upload->data();
 				$img = $data['file_name'];
-				$sql = "INSERT INTO TB_GOHAN_MIXER (Mixer_code,Name, Name_JP,Pic) VALUES ('$mixer_code','$meat_th','$meat_jp','$img');";
+				$sql = "INSERT INTO TB_GOHAN_MIXER (Mixer_code,Name, Name_JP,Pic) VALUES ('$mixer_code','$meat_th',N'$meat_jp','$img');";
 				if (!$this->db->simple_query($sql)) {
 					$error = $this->db->error(); // Has keys 'code' and 'message'
 					return $error['code'];

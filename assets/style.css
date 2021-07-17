@@ -1,0 +1,34 @@
+* {
+    font-family: 'Prompt', sans-serif;
+    font-size: .87rem;
+}
+
+.h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 0px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.fc-event-title {
+    font-size: 0.8rem;
+}
+
+.fc-popover .popover .fc-more-popover .fc-day .fc-day-wed .fc-day-past {
+    width: 8000px;
+}
+
+.table_meeting {
+    display: none;
+}
+
+.sidebar-dark-primary {
+    background-color: #307900;
+    color: black;
+}

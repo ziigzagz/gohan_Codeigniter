@@ -21,7 +21,14 @@ class MasterMenu extends CI_Model
 	public function get_menu()
 	{
 		$query = $this->db->query(
-			"SELECT * FROM TB_GOHAN_MASTER where show = '1' order by Price asc;"
+			"SELECT * FROM TB_GOHAN_MASTER where show = '1' order by M_Group asc;"
+		);
+		return $query->result();
+	}
+	public function get_menu_with_type($type)
+	{
+		$query = $this->db->query(
+			"SELECT * FROM TB_GOHAN_MASTER where show = '1' and M_Group = '$type' order by Price asc;"
 		);
 		return $query->result();
 	}
@@ -32,12 +39,15 @@ class MasterMenu extends CI_Model
 		$name_jp = $this->input->post('name_jp');
 		$detail = $this->input->post('detail');
 		$spicy = $this->input->post('spicy');
-		$myboxes = $_POST['mixer'];
-		$mixer = "";
-		foreach (array_keys($myboxes) as $item) {
-			$mixer .= $item . ",";
-		}
 		$price = $this->input->post('price');
+		$mixer = "";
+		if (isset($_POST['mixer'])) {
+			$myboxes = $_POST['mixer'];
+			foreach (array_keys($myboxes) as $item) {
+				$mixer .= $item . ",";
+			}
+		}
+
 		if (!$this->upload->do_upload('userfile')) {
 			return false;
 		} else {

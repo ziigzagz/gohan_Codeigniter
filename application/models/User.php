@@ -13,6 +13,7 @@ class User extends CI_Model
         $query = $this->db->query(
             "SELECT * FROM TB_GOHAN_MEMBER where username = '$username' and password = '$password';"
         );
+       
         return $query->result();
     }
 }
