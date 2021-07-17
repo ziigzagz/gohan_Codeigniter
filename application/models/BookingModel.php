@@ -29,9 +29,28 @@ class BookingModel extends CI_Model
     public function get_booking_on_date()
     {
         $username = $this->session->userdata('username');
+        // $booking_date = '2021-07-17';
         $booking_date = $_POST['date'];
-        $query = $this->db->query(
+
+        $query_booking = $this->db->query(
             "SELECT * FROM TB_GOHAN_BOOKING where username = '$username' and Booking_Date = convert(date,'$booking_date');"
+        );
+        $query_master_menu = $this->db->query(
+            "SELECT * FROM TB_GOHAN_MASTER;"
+        );
+
+        $data = array();
+        $data['query_booking'] = $query_booking->result();
+        $data['query_master_menu'] = $query_master_menu->result();
+
+        print_r(json_encode($data));
+    }
+    public function get_booking()
+    {
+        $username = $this->session->userdata('username');
+
+        $query = $this->db->query(
+            "SELECT * FROM TB_GOHAN_BOOKING where username = '$username' and Booking_Date = convert(date,getdate());"
         );
         return $query->result();
     }

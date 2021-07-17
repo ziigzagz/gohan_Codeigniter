@@ -47,15 +47,16 @@ class Booking extends CI_Controller
             header("Refresh:0; url=" . base_url() . "login");
         } else {
             $send_value = array();
-            foreach ($this->BookingModel->get_booking() as $item) {
-                $send_value[] = $item->Menu_id;
-            }
+            // foreach ($this->BookingModel->get_booking_on_date() as $item) {
+            //     $send_value[] = $item->Menu_id;
+            // }
             $data = array(
-                'menu' => $this->BookingModel->get_menu(),
+                'menu' => $this->BookingModel->get_booking_on_date(),
                 'booking' => $send_value,
                 'error' => ''
             );
-            return $data;
+            $test = "123";
+            return $test;
         }
     }
     public function insert()

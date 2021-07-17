@@ -30,23 +30,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 </div>
                             </div>
                             <div class="card-body">
-                                <pre>
-                                <?php
-                                // print_r($booking);
-                                // print_r($menu); 
-                                ?>
-                                </pre>
-
                                 <div class="row">
                                     <div class="col">
-                                        <table class="table table-striped">
+                                        <table class="table table-striped" id="myTable">
                                             <thead>
                                                 <tr style="width:20px">
                                                     <th class="checkbox-1">#</th>
                                                     <th>MENU</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="tb_body">
                                                 <?php foreach ($menu as $item) {
                                                 ?>
                                                     <tr>
@@ -96,29 +89,29 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     var formData = {
                         date: document.getElementById("datepicker").value,
                     };
-                    $.ajax({
-                        url: "<?= base_url() ?>Booking/get_booking_on_date",
-                        type: "POST",
-                        data: formData,
-                        success: function(data, textStatus, jqXHR) {
-                            console.log(typeof(data))
-                            console.log(data)
+                    $.post("<?= base_url() ?>Booking/get_booking_on_date", {
+                            date: document.getElementById("datepicker").value,
                         },
-                        error: function(jqXHR, textStatus, errorThrown) {
+                        function(data, textStatus, jqXHR) {
+                            var row = $('#myTable tr').length;
+                            console.log(typeof(data));
+                            console.log(JSON.parse(data));
+                            console.log(row);
 
-                        }
-                    });
-                    // // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-                    // var datepickerinput = document.getElementById("datepicker").value;
-                    // document.getElementById('tb_body').innerHTML = "";
-                    // console.log(datepickerinput);
-                    // var path = "database/get_meeting_all_day.php?date='" + datepickerinput + "'";
-                    // var tmp_list = []
-                    // console.log(path)
-                    // $.get(path, function(data, status) {
+                            //data: Received from server
+                            var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+                            var row = table.insertRow(0);
+                            var cell0 = row.insertCell(0);
+                            var cell1 = row.insertCell(1);
 
-                    // }).then(() => {});
 
+                            cell0.innerHTML = '<td style = "width:20px" >'
+                            cell0.innerHTML += '<div class="form-check">'
+                            cell0.innerHTML += '<input class="form-check-input" type="checkbox" value="<?php print_r($item->Menu_Code) ?>-<?php print_r($item->M_Group) ?>" id="<?php print_r($item->Menu_Code) ?><?php print_r($item->M_Group) ?>" name="menu[<?php print_r($item->Menu_Code) ?>-<?php print_r($item->M_Group) ?>]" <?= in_array(($item->Menu_Code) . '-' . ($item->M_Group), $booking) ? "checked" : null ?>>'
+                            cell0.innerHTML += '</div>'
+                            cell0.innerHTML += '</td>'
+                            cell1.innerHTML = "1";
+                        });
                 }
             });
         });
