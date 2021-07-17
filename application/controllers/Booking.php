@@ -59,6 +59,24 @@ class Booking extends CI_Controller
             return $test;
         }
     }
+    public function get_menu_with_Date_And_Username()
+    {
+        if (!$this->session->userdata('logged_in')) {
+            header("Refresh:0; url=" . base_url() . "login");
+        } else {
+            $send_value = array();
+            // foreach ($this->BookingModel->get_booking_on_date() as $item) {
+            //     $send_value[] = $item->Menu_id;
+            // }
+            $data = array(
+                'menu' => $this->BookingModel->get_menu_with_Date_And_Username(),
+                'booking' => $send_value,
+                'error' => ''
+            );
+            
+         
+        }
+    }
     public function insert()
     {
         if (!$this->session->userdata('logged_in')) {
@@ -67,10 +85,10 @@ class Booking extends CI_Controller
             $data = $this->BookingModel->insert();
             if ($data === true) {
                 $this->session->set_tempdata('status_insert', 'success', 3);
-                header("Refresh:0; url=../setup");
+                header("Refresh:0; url=../Booking");
             } else {
                 $this->session->set_tempdata('status_insert', 'fail', 3);
-                header("Refresh:0; url=../setup");
+                header("Refresh:0; url=../Booking");
             }
         }
     }

@@ -23,7 +23,7 @@
                 <i class="fas fa-user-tie"></i>
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?= $_SESSION['username']?></a>
+                <a href="#" class="d-block"><?= $_SESSION['username'] ?></a>
             </div>
         </div>
         <!-- Sidebar Menu -->
@@ -32,12 +32,25 @@
                 <li class="nav-item menu-open">
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo base_url() ?>Booking" class="nav-link 
-                            <?php echo $this->router->class === "Booking" ? "active" : null; ?>">
+                            <?php
+
+                            ?>
+                            <a href="<?php echo base_url() ?>Booking/Booking_Choose" class="nav-link 
+                            <?php
+
+                            echo $this->router->class . '/' . $this->router->fetch_method() === "Booking/Booking_Choose" ? "active" : null; ?>">
                                 <i class="fas fa-clipboard-check"></i>
-                                <p>Booking</p>
+                                <p>Booking Setup</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?php echo base_url() ?>Booking" class="nav-link 
+                                <?php echo $this->router->class . '/' . $this->router->fetch_method() === "Booking/index" ? "active" : null; ?>">
+                                <i class="fas fa-chart-bar"></i>
+                                <p>Booking Report</p>
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a href="<?php echo base_url() ?>Setup" class="nav-link 
                             <?php echo $this->router->class === "Setup" ? "active" : null; ?>">

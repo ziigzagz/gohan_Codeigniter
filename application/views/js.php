@@ -9,6 +9,9 @@
 <script src="<?php echo base_url() ?>node_modules/@fortawesome/fontawesome-free/js/all.js"></script>
 <!-- sweetalert2 -->
 <script src="<?php echo base_url() ?>node_modules/sweetalert2/dist/sweetalert2.js"></script>
+<!-- Datepicker -->
+<script src="<?php echo base_url() ?>script/jquery-1.12.4_Datepicker.js"></script>
+<script src="<?php echo base_url() ?>script/jquery-ui_Datepicker.js"></script>
 <!-- dataTables -->
 <script src="<?php echo base_url() ?>node_modules\datatables.net\js\jquery.dataTables.js"></script>
 <script src="<?php echo base_url() ?>plugins/datatables/jquery.dataTables.min.js"></script>
@@ -26,6 +29,3 @@
 <!-- fullCalendar 2.2.5 -->
 <script src="<?php echo base_url() ?>plugins/moment/moment.min.js"></script>
 <script src="<?php echo base_url() ?>plugins/fullcalendar/main.js"></script>
-<!-- Datepicker -->
-<script src="<?php echo base_url() ?>script/jquery-1.12.4_Datepicker.js"></script>
-<script src="<?php echo base_url() ?>script/jquery-ui_Datepicker.js"></script>
