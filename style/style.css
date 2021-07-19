@@ -68,3 +68,7 @@
     .fc-event-title-container {
         cursor: pointer;
     }
+    
+    .m_hover {
+        cursor: pointer;
+    }

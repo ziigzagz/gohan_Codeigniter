@@ -12,17 +12,7 @@ class Booking extends CI_Controller
         date_default_timezone_set("Asia/Bangkok");
     }
 
-    public function index()
-    {
-        if (!$this->session->userdata('logged_in')) {
-            header("Refresh:0; url=" . base_url() . "login");
-        } else {
-            $this->load->view('css');
-            $this->load->view('js');
-            $this->load->view('Booking/Booking_page.php');
-        }
-    }
-    public function Booking_Choose()
+    public function index($date)
     {
         if (!$this->session->userdata('logged_in')) {
             header("Refresh:0; url=" . base_url() . "login");
@@ -30,7 +20,29 @@ class Booking extends CI_Controller
             $this->load->view('css');
             $this->load->view('js');
             $send_value = array();
-            foreach ($this->BookingModel->get_booking() as $item) {
+            foreach ($this->BookingModel->get_booking($date) as $item) {
+                $send_value[] = $item->Menu_id;
+            }
+            $data = array(
+                'menu' => $this->MasterMenu->get_menu(),
+                'booking' => $send_value,
+                // 'booking_from_user' => $send_value,
+                'error' => '',
+                'date' => $date
+            );
+            $this->load->view('Booking/Booking_page.php', $data);
+        }
+    }
+
+    public function Booking_Choose($date)
+    {
+        if (!$this->session->userdata('logged_in')) {
+            header("Refresh:0; url=" . base_url() . "login");
+        } else {
+            $this->load->view('css');
+            $this->load->view('js');
+            $send_value = array();
+            foreach ($this->BookingModel->get_booking($date) as $item) {
                 $send_value[] = $item->Menu_id;
             }
             $data = array(
@@ -41,6 +53,7 @@ class Booking extends CI_Controller
             $this->load->view('Booking/Booking_choose_page.php', $data);
         }
     }
+ 
     public function get_booking_on_date()
     {
         if (!$this->session->userdata('logged_in')) {
@@ -73,8 +86,6 @@ class Booking extends CI_Controller
                 'booking' => $send_value,
                 'error' => ''
             );
-            
-         
         }
     }
     public function insert()
@@ -83,12 +94,32 @@ class Booking extends CI_Controller
             header("Refresh:0; url=" . base_url() . "login");
         } else {
             $data = $this->BookingModel->insert();
+
             if ($data === true) {
                 $this->session->set_tempdata('status_insert', 'success', 3);
-                header("Refresh:0; url=../Booking");
+                header("Refresh:0; url=../Booking/index/" . date('Y-m-d'));
             } else {
                 $this->session->set_tempdata('status_insert', 'fail', 3);
-                header("Refresh:0; url=../Booking");
+                header("Refresh:0; url=../Booking/index/" . date('Y-m-d'));
+            }
+        }
+    }
+    public function insert_booking_from_user()
+    {
+        if (!$this->session->userdata('logged_in')) {
+            header("Refresh:0; url=" . base_url() . "login");
+        } else {
+
+            $data = $this->BookingModel->insert_booking_from_user();
+
+            if ($data === true) {
+
+                $this->session->set_tempdata('status_insert', 'success', 3);
+                header("Refresh:0; url=../Booking/index/" . date('Y-m-d'));
+            } else {
+
+                $this->session->set_tempdata('status_insert', 'fail', 3);
+                header("Refresh:0; url=../Booking/index/" . date('Y-m-d'));
             }
         }
     }

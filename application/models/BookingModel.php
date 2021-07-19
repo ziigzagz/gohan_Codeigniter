@@ -33,6 +33,38 @@ class BookingModel extends CI_Model
         }
         return true;
     }
+    public function insert_booking_from_user()
+    {
+        $username = $this->session->userdata('username');
+        $date = $this->input->post('date');
+        $sql = "delete TB_GOHAN_BOOKING_FROM_USER where username = '$username' and Booking_date = '$date';";
+        if (!$this->db->simple_query($sql)) {
+            $error = $this->db->error(); // Has keys 'code' and 'message'
+            return $error['code'];
+        }
+        if (isset($_POST['menu'])) {
+            $Menu_Code =  $this->input->post('Menu_Code');
+            $M_Group =  $this->input->post('M_Group');
+            $menu =  $this->input->post('menu');
+            foreach ($menu as $item) {
+                // echo $item;
+                $tmp_Menu_Code = explode('-',$item)[0];
+                $tmp_M_Group = explode('-',$item)[1];
+                // echo $tmp_Menu_Code."**".$tmp_M_Group;
+                // die();
+                try {
+                    $sql = "INSERT INTO TB_GOHAN_BOOKING_FROM_USER (Username, Menu_Code, M_Group, Booking_date) VALUES ('$username',$tmp_Menu_Code,'$tmp_M_Group','$date');";
+                    if (!$this->db->simple_query($sql)) {
+                        $error = $this->db->error(); // Has keys 'code' and 'message'
+                        return $error['code'];
+                    }
+                } catch (Exception $e) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     public function get_booking_on_date()
     {
         $username = $this->session->userdata('username');
@@ -53,12 +85,21 @@ class BookingModel extends CI_Model
     public function get_menu_with_Date_And_Username()
     {
     }
-    public function get_booking()
+    public function get_booking($date)
     {
         $username = $this->session->userdata('username');
 
         $query = $this->db->query(
-            "SELECT * FROM TB_GOHAN_BOOKING where username = '$username' and Booking_Date = convert(date,getdate());"
+            "SELECT * FROM TB_GOHAN_BOOKING where username = '$username' and Booking_Date ='$date';"
+        );
+        return $query->result();
+    }
+    public function get_booking_from_user($date)
+    {
+        $username = $this->session->userdata('username');
+
+        $query = $this->db->query(
+            "SELECT * FROM TB_GOHAN_BOOKING_FROM_USER where username = '$username' and Booking_Date ='$date';"
         );
         return $query->result();
     }

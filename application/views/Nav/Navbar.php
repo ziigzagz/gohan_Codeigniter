@@ -19,12 +19,13 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
+            <div class="image text-white">
                 <i class="fas fa-user-tie"></i>
             </div>
             <div class="info">
                 <a href="#" class="d-block"><?= $_SESSION['username'] ?></a>
             </div>
+        
         </div>
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -32,10 +33,8 @@
                 <li class="nav-item menu-open">
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <?php
 
-                            ?>
-                            <a href="<?php echo base_url() ?>Booking/Booking_Choose" class="nav-link 
+                            <a href="<?php echo base_url() ?>Booking/Booking_Choose/<?= date("Y-m-d") ?>" class="nav-link 
                             <?php
 
                             echo $this->router->class . '/' . $this->router->fetch_method() === "Booking/Booking_Choose" ? "active" : null; ?>">
@@ -44,8 +43,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo base_url() ?>Booking" class="nav-link 
+                            <a href="<?php echo base_url() ?>Booking/index/<?= date("Y-m-d") ?>" class="nav-link 
                                 <?php echo $this->router->class . '/' . $this->router->fetch_method() === "Booking/index" ? "active" : null; ?>">
+                                <i class="fas fa-chart-bar"></i>
+                                <p>Booking</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo base_url() ?>Booking/Booking_Report/<?= date("Y-m-d") ?>" class="nav-link 
+                                <?php echo $this->router->class . '/' . $this->router->fetch_method() === "Booking/Booking_Report" ? "active" : null; ?>">
                                 <i class="fas fa-chart-bar"></i>
                                 <p>Booking Report</p>
                             </a>
