@@ -19,7 +19,7 @@ class Login extends CI_Controller
     public function checklogin()
     {
         $data = $this->User->checklogin();
-     
+
         if (sizeof($data)) {
             $user_logged_in = array(
                 'username'  => $data[0]->Username,
@@ -28,10 +28,14 @@ class Login extends CI_Controller
             );
             $this->session->set_tempdata('status_login', 'success', 3);
             $this->session->set_userdata($user_logged_in);
-            header("Refresh:0; url=".base_url()."setup");
+            if ($data[0]->Lv == 1) {
+                header("Refresh:0; url=" . base_url() . "Report");
+            } else {
+                header("Refresh:0; url=" . base_url() . "Report");
+            }
         } else {
             $this->session->set_tempdata('status_login', 'fail', 3);
-            header("Refresh:0; url=".base_url()."login");
+            header("Refresh:0; url=" . base_url() . "login");
         }
     }
 }

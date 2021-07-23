@@ -12,13 +12,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <?php include_once(APPPATH . 'views/Nav/Navbar.php'); ?>
-        <div class="content-wrapper" style="min-height: 100%;">
+        <div class="content-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col  mt-3">
                         <div class="card">
                             <div class="card-header bg-info text-center">
-                                MENU (<?php print_r($error) ?>)
+                                MENU
                             </div>
                             <div class="card-body bg-light text-start">
                                 <div class="row">
@@ -112,11 +112,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             <option value="noodle">Noodle</option>
                                             <option value="dessert">Dessert</option>
                                         </select>
-
                                     </div>
-                                  
-
-
                                 </div>
                                 <div class="row mt-3">
                                     <?php
@@ -142,7 +138,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                             </button>
                                                             <!-- UPDATE Modal -->
                                                             <div class="modal fade" id="updt<?php print_r($item->Menu_Code) ?><?php print_r($item->M_Group) ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <form action="./setup/update" method="POST" enctype="multipart/form-data">
+                                                                <form action="<?= base_url() ?>setup/update" method="POST" enctype="multipart/form-data">
 
                                                                     <div class="modal-dialog">
                                                                         <div class="modal-content">
@@ -155,9 +151,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                             <div class="modal-body text-center">
                                                                                 <div class="container">
                                                                                     <div class="row">
-                                                                                        <div class="mb-3">
+                                                                                        <div class="mb-3" hidden>
                                                                                             <label for="formGroupExampleInput" class="form-label">Type</label>
-                                                                                            <select class="form-select" aria-label="Default select example" name="type" id="type<?php print_r($item->Menu_Code); ?><?php print_r($item->M_Group); ?>">
+                                                                                            <select class="form-select" aria-label="Default select example" name="type" id="type<?php print_r($item->Menu_Code); ?><?php print_r($item->M_Group); ?>" hidden>
                                                                                                 <option value="maincourse" <?php echo $item->M_Group == "A" ? 'selected' : null ?>>Main courses</option>
                                                                                                 <option value="sidedish" <?php echo $item->M_Group == "B" ? 'selected' : null ?>>Side dish</option>
                                                                                                 <option value="noodle" <?php echo $item->M_Group == "C" ? 'selected' : null ?>>Noodle </option>
@@ -172,6 +168,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                                             <label for="formGroupExampleInput2" class="form-label">Menu (Japan)</label>
                                                                                             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="ガイトートライス" name="name_jp" value="<?php print_r($item->Name_Jp); ?>" required>
                                                                                         </div>
+                                                                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ข้าวไก่กรอบ" name="img" value="<?php print_r($item->Menu_Pic); ?>" hidden>
                                                                                         <div class="mb-3">
                                                                                             <label for="exampleFormControlTextarea1" class="form-label">Detail</label>
                                                                                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="detail"><?php print_r($item->Detail_Jp); ?></textarea>
@@ -229,7 +226,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                             </button>
                                                             <!-- DELETE Modal -->
                                                             <div class="modal fade" id="del<?php print_r($item->Menu_Code) ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <form action="./setup/delete" method="POST">
+                                                                <form action="<?= base_url() ?>/setup/delete" method="POST">
                                                                     <div class="modal-dialog">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
@@ -337,13 +334,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script>
         function fetchMenu() {
             console.log(document.getElementById('menu_type').value);
-            location.href = "<?= base_url()?>Setup/type/"+document.getElementById('menu_type').value;
-            window.localStorage.setItem("page",document.getElementById('menu_type').value);
+            location.href = "<?= base_url() ?>Setup/type/" + document.getElementById('menu_type').value;
+            window.localStorage.setItem("page", document.getElementById('menu_type').value);
         }
-        if(window.localStorage.getItem("page")){
+        if (window.localStorage.getItem("page")) {
             document.getElementById('menu_type').value = window.localStorage.getItem("page");
         }
-       
     </script>
 </body>
 

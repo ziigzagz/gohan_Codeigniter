@@ -99,11 +99,11 @@ class Setup extends CI_Controller
         } else {
             $data = $this->MasterMenu->insert_master_menu();
             if ($data === true) {
-                $this->session->set_tempdata('status_insert', 'success', 3);
-                header("Refresh:0; url=../setup");
+                $this->session->set_tempdata('status_insert', 'success', 1);
+                header("Refresh:0; url=".base_url()."setup");
             } else {
-                $this->session->set_tempdata('status_insert', 'fail', 3);
-                header("Refresh:0; url=../setup");
+                $this->session->set_tempdata('status_insert', 'fail', 1);
+                header("Refresh:0; url=".base_url()."setup");
             }
         }
     }
@@ -115,11 +115,11 @@ class Setup extends CI_Controller
         } else {
             $data = $this->MasterMenu->delete_master_menu();
             if ($data === true) {
-                $this->session->set_tempdata('status_delete', 'success', 3);
-                header("Refresh:0; url=../setup");
+                $this->session->set_tempdata('status_delete', 'success', 1);
+                header("Refresh:0; url=".base_url()."setup");
             } else {
-                $this->session->set_tempdata('status_delete', 'fail', 3);
-                header("Refresh:0; url=../setup");
+                $this->session->set_tempdata('status_delete', 'fail', 1);
+                header("Refresh:0; url=".base_url()."setup");
             }
         }
     }
@@ -131,11 +131,12 @@ class Setup extends CI_Controller
         } else {
             $data = $this->MasterMenu->update_master_menu();
             if ($data === true) {
-                $this->session->set_tempdata('status_update', 'success', 3);
-                header("Refresh:0; url=../setup");
+                $this->session->set_tempdata('status_update', 'success', 1);
+                // die();
+                header("Refresh:0; url=".base_url()."setup");
             } else {
-                $this->session->set_tempdata('status_update', 'fail', 3);
-                header("Refresh:0; url=../setup");
+                $this->session->set_tempdata('status_update', 'fail', 1);
+                header("Refresh:0; url=".base_url()."setup");
             }
         }
     }

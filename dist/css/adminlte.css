@@ -36581,7 +36581,7 @@ body.iframe-mode-fullscreen {
 }
 
 .content-wrapper {
-    height: 100%;
+    height: 0%;
 }
 
 .content-wrapper.iframe-mode .btn-iframe-close {

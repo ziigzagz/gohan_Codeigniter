@@ -69,6 +69,38 @@
         cursor: pointer;
     }
     
-    .m_hover {
+    .modal-content {
+        width: 800px;
+        margin-left: 1px;
+    }
+    
+    .content-wrapper {
+        min-height: 0px;
+    }
+    
+    .booking-success {
+        background-color: '#aedc9b'
+    }
+    
+    .fc-day-today {
+        background: #FFF !important;
+        border: none !important;
+        border-top: 1px solid #ddd !important;
+        font-weight: bold;
+    }
+    
+    .fc-daygrid-day {
         cursor: pointer;
+    }
+    
+    .content-wrapper {
+        min-height: 0px !important;
+    }
+    
+    .table-responsive {
+        display: table;
+    }
+    
+    .bg-danger {
+        background: #ff8181 !important;
     }
