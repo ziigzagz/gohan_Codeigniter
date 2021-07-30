@@ -9,8 +9,15 @@
     </ul>
 </nav>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <div class="p-3">
+    <div class="p-3 text-white text-center">
         <img src="<?php echo base_url() ?>images\Logo\ATC-Full.png" alt="" class="img-fluid">
+        <div class="row">
+            <div class="col">
+                <h1 class=" mx-auto">
+                    GOHAN
+                </h1>
+            </div>
+        </div>
     </div>
     <!-- Brand Logo -->
     <div class="container">
@@ -35,7 +42,7 @@
                         <li class="nav-item" <?= $_SESSION['Level'] == 0 ? 'hidden' : NULL ?>>
                             <a href="<?php echo base_url() ?>Report" class="nav-link 
                                 <?php echo $this->router->class . '/' . $this->router->fetch_method() === "Report" ? "active" : null; ?>">
-                            
+
                                 <i class="far fa-calendar-alt"></i>
                                 <p>Report</p>
                             </a>
@@ -72,7 +79,6 @@
                             </a>
                         </li>
 
-
                         <li class="nav-item" <?= $_SESSION['Level'] == 0 ? 'hidden' : NULL ?>>
                             <a href="<?php echo base_url() ?>Setup" class="nav-link 
                             <?php echo $this->router->class === "Setup" ? "active" : null; ?>">
@@ -85,6 +91,13 @@
                             <?php echo $this->router->class === "MasterMixer" ? "active" : null; ?>">
                                 <i class="fas fa-bacon"></i>
                                 <p>Master Mixer</p>
+                            </a>
+                        </li>
+                        <li class="nav-item" <?= $_SESSION['Level'] == 0 ? 'hidden' : NULL ?>>
+                            <a href="<?php echo base_url() ?>ManageUser" class="nav-link
+                            <?php echo $this->router->class === "ManageUser" ? "active" : null; ?>">
+                                <i class="fas fa-user"></i>
+                                <p>Manage User</p>
                             </a>
                         </li>
                         <?php if (isset($_SESSION['logged_in'])) { ?>
