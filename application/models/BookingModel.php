@@ -141,6 +141,29 @@ class BookingModel extends CI_Model
         );
         return $query->result();
     }
+    public function api_get_booking_from_user2($username, $date)
+    {
+        // $username = $_POST['username'];
+        // $date = $_POST['date'];
+        $query = $this->db->query(
+            "SELECT 
+            a.Menu_Code,
+            b.M_Group,
+            COUNT(b.M_Group) as Total,
+            Name_Th,
+            Spicy,
+            a.Username,
+            Price,
+            Menu_Pic
+            FROM TB_GOHAN_BOOKING_FROM_USER as a
+            INNER JOIN TB_GOHAN_MASTER as b
+            on b.Menu_Code = a.Menu_Code and b.M_Group = a.M_Group
+            where Booking_date = '$date'
+            group by a.Menu_Code,b.M_Group,b.Name_Th,b.Spicy,b.Price,b.Menu_Pic, a.Username;
+            "
+        );
+        return $query->result();
+    }
     public function get_booking_Monthly($month, $year)
     {
         // $username = $_POST['username'];
@@ -216,6 +239,7 @@ class BookingModel extends CI_Model
             where Username = '$user'
             group by username,Booking_date"
         );
+
         return $query->result();
     }
     public function get_year()

@@ -109,6 +109,15 @@ class Booking extends CI_Controller
             print_r(json_encode($this->BookingModel->api_get_booking_from_user($username, $date)));
         }
     }
+    public function API_Get_Booking_date_and_username2($username, $date)
+    {
+
+        if (!$this->session->userdata('logged_in')) {
+            header("Refresh:0; url=" . base_url() . "login");
+        } else {
+            print_r(json_encode($this->BookingModel->api_get_booking_from_user2($username, $date)));
+        }
+    }
 
     public function get_booking_on_date()
     {

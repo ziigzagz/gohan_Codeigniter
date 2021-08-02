@@ -104,3 +104,9 @@
     .bg-danger {
         background: #ff8181 !important;
     }
+    
+    @media print {
+        .noPrint {
+            display: none;
+        }
+    }

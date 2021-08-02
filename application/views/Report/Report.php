@@ -15,10 +15,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <?php include_once(APPPATH . 'views/Nav/Navbar.php'); ?>
         <div class="content-wrapper">
             <div class="container-fluid">
-               
+
                 <div class="row pt-3">
                     <!-- /.col -->
-                    <div class="col mx-auto">
+                    <div class="col-8 mx-auto noPrint">
                         <div class="card card-primary">
                             <div class="card-body p-2">
                                 <!-- THE CALENDAR -->
@@ -29,8 +29,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         </div>
                         <!-- /.card -->
                     </div>
-                    <div class="col-4">
-
+                    <div class="col" id="forprint">
                         <div class="div" id="print">
                             <div class="card">
                                 <div class="card-header">
@@ -43,6 +42,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             <h5 id="Price">
 
                                             </h5>
+                                            <button class="btn btn-info" onclick="window.print();">
+                                                <i class="fas fa-print"></i>
+                                                Print
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +80,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                 <td></td>
                                             </tr>
                                         </tbody>
+
                                     </table>
+
                                 </div>
                             </div>
 
@@ -154,35 +159,47 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 ],
                 eventClick: function(info) {
                     info.jsEvent.preventDefault();
-                    console.log(info.event.id)
+                    // console.log(info.event.id)
                     var date = info.event.id.split('&')[0]
                     var username = info.event.id.split('&')[1]
                     var price = 0;
-                    console.log(date)
+                    // console.log(date)
                     document.getElementById('Date').innerHTML = "Date : " + date
                     $.post("<?= base_url() ?>Booking/API_Get_Booking_date_and_username/" + username + "/" + date, {
                             date: date,
                             username: username
                         },
                         function(data, textStatus, jqXHR) {
-                            // console.log(typeof(JSON.parse(data)));
-                            // console.log((JSON.parse(data)));
                             document.getElementById("tb_body").innerHTML = "";
                             JSON.parse(data).forEach(element => {
-                                console.log(element);
+                                // console.log(element);
                                 var img = element.Menu_Pic;
                                 price += element.Price * element.Total;
-                                $('#tb tbody').append("<tr><td>" + element.Name_Th + "</td><td><img src='<?= base_url() ?>images/s" + element.Spicy + ".png' height='20' alt='' srcset=''></td><td>" + element.Price + "</td><td><img src='<?= base_url() ?>images/menu/" + element.Menu_Pic + "' height='40' alt='' srcset=''></td><td>" + element.Total + "</td></tr>")
+                                $('#tb tbody').append("<tr><td id='" + element.M_Group + "-" + element.Menu_Code + "'><h4>" + element.Name_Th + "</h4><br></td><td><img src='<?= base_url() ?>images/s" + element.Spicy + ".png' height='20' alt='' srcset=''></td><td>" + element.Price + "</td><td><img src='<?= base_url() ?>images/menu/" + element.Menu_Pic + "' height='40' alt='' srcset=''></td><td>" + element.Total + "</td></tr>")
+                                $.post("<?= base_url() ?>Booking/API_Get_Booking_date_and_username2/" + username + "/" + date, {
+                                        date: date,
+                                        username: username
+                                    },
+                                    function(data, textStatus, jqXHR) {
+                                        var tmp = element.M_Group + "-" + element.Menu_Code
+                                        JSON.parse(data).forEach(element1 => {
+                                            if (tmp == (element1.M_Group + "-" + element1.Menu_Code)) {
+                                                document.getElementById(element1.M_Group + "-" + element1.Menu_Code).innerHTML += "• " + element1.Username + "<br>";
+                                            }
+
+                                        });
+                                    });
                             });
-                            console.log(price);
+                            // console.log(price);
                             document.getElementById('Price').innerHTML = "Total amount is " + price + " Baht.";
                         });
-                    if (info.event.url) {}
+
                 }
             });
             calendar.render();
         })
     </script>
+
 
 </body>
 
