@@ -72,15 +72,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                 <tr>
                                                     <td><?= $item+1?></td>
                                                     <td>
-                                                        <?php print_r($key->Username); ?>
+                                                   <?php print_r($key->Username); ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <!-- Button trigger modal -->
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#upd">
+                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#upd<?php print_r($key->ID); ?>">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="upd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal fade" id="upd<?php print_r($key->ID); ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <form action="ManageUser/delete" method="POST" enctype="multipart/form-data" id="file_upload">
                                                                     <div class="modal-content">

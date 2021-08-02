@@ -11,7 +11,7 @@ class User extends CI_Model
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $query = $this->db->query(
-            "SELECT * FROM TB_GOHAN_MEMBER where username = '$username' and password = '$password';"
+            "SELECT * FROM TB_GOHAN_MEMBER where username = '$username' and password = '$password' and Lv != 2;"
         );
 
         return $query->result();
@@ -31,15 +31,22 @@ class User extends CI_Model
                 return $error['code'];
             }
             return true;
-        }
-        else{
-            return false;
+        } else {
+            echo "<pre>";
+            if (($query->result()[0]->Lv) == '2') { //  0 is active // 1 is admin // 2 is deleted//
+                $this->db->query(
+                    "UPDATE TB_GOHAN_MEMBER SET Lv = 0, Password = '$password' WHERE Username = '$username';"
+                );
+                return true;
+            }else{
+                return false;
+            }
         }
     }
     public function get_user()
     {
         $query = $this->db->query(
-            "SELECT * FROM TB_GOHAN_MEMBER where Lv != 1 order by Username asc;"
+            "SELECT * FROM TB_GOHAN_MEMBER where Lv = 0 order by Username asc;"
         );
         return $query->result();
     }
@@ -47,7 +54,7 @@ class User extends CI_Model
     {
         $id = $this->input->post('id');
         $this->db->query(
-            "UPDATE TB_GOHAN_MEMBER SET Lv = -1 WHERE id = '$id';"
+            "UPDATE TB_GOHAN_MEMBER SET Lv = 2 WHERE id = '$id';"
         );
     }
 }
