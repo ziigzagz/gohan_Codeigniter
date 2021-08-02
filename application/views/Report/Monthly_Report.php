@@ -196,6 +196,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 }
             });
         });
+        document.getElementById('month').value = parseInt(mm);
     </script>
     <script>
 
