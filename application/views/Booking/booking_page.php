@@ -43,6 +43,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                             <div class="card-header">
                                                                 <?php print_r($item_menu->Name_Th) ?>
                                                                 <br>
+                                                                <?php print_r($item_menu->Name_Jp) ?>
+                                                                <br>
                                                                 <img class="" height="20" src="<?= base_url() ?>images/s<?php print_r($item_menu->Spicy) ?>.png">
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" name="menu[<?php print_r($item_menu->Menu_Code) ?>-<?php print_r($item_menu->M_Group) ?>]" type="checkbox" value="<?php print_r($item_menu->Menu_Code) ?>-<?php print_r($item_menu->M_Group) ?>" id="checkbox<?php echo ($item_menu->Menu_Code . '-' . $item_menu->M_Group) ?>">

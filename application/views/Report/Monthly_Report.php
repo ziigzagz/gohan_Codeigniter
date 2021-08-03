@@ -51,6 +51,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <div class="col-2">
                                         <div class="mb-3">
                                             <button class="btn btn-info" onclick="search()">Search</button>
+                                            <button class="btn btn-info" onclick="window.print();">
+                                                <i class="fas fa-print"></i>
+                                                Print
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -125,8 +129,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         tmp_row += '</tr>'
                         $('#tb_body').append(tmp_row)
                     })
-
-
                     tmp_row = "<tr class='bg-light'>"
                     tmp_row += '<td>Sum</td>'
                     for (var i = 0; i < daysInMonth; ++i) {
@@ -137,7 +139,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         } else {
                             tmp_row += '<td id="sum' + (i + 1) + '"></td>'
                         }
-
                     }
                     tmp_row += '<td id="sum_total"></td>'
                     tmp_row += '</tr>'
@@ -197,6 +198,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             });
         });
         document.getElementById('month').value = parseInt(mm);
+        search()
     </script>
     <script>
 

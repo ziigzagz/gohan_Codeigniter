@@ -86,7 +86,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="formGroupExampleInput2" class="form-label">ราคา (THB)</label>
-                                                                    <input type="number" min="0" class="form-control text-end" max="100" id="price" placeholder="" name="price" value="" required>
+                                                                    <input type="number" min="0" class="form-control text-end" max="1000" id="price" placeholder="" name="price" value="" required>
                                                                 </div>
                                                                 <div class="input-group">
                                                                     <input type="file" name="userfile" class="form-control" size="20000000" required />
@@ -204,7 +204,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                                         </div>
                                                                                         <div class="mb-3">
                                                                                             <label for="formGroupExampleInput2" class="form-label">ราคา (THB)</label>
-                                                                                            <input type="number" min="0" class="form-control text-end" max="100" id="price" placeholder="" name="price" value="<?php echo $item->Price ?>" required>
+                                                                                            <input type="number" min="0" class="form-control text-end" max="1000" id="price" placeholder="" name="price" value="<?php echo $item->Price ?>" required>
                                                                                         </div>
                                                                                         <div class="input-group">
                                                                                             <input type="file" name="userfile" class="form-control" size="20000000" />
