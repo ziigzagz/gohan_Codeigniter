@@ -37,13 +37,11 @@ class Report extends CI_Controller
         } else {
             $this->load->view('css');
             $this->load->view('js');
-            if ($this->session->userdata('Level') == 1) {
-                $data = array(
-                    'booking' => $this->BookingModel->get_booking_group_by(),
-                    'year' => $this->BookingModel->get_year()
-                );
-                $this->load->view('Report/Monthly_Report.php', $data);
-            }
+            $data = array(
+                'booking' => $this->BookingModel->get_booking_group_by(),
+                'year' => $this->BookingModel->get_year()
+            );
+            $this->load->view('Report/Monthly_Report.php', $data);
         }
     }
 }

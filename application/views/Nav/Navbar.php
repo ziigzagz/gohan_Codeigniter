@@ -48,13 +48,6 @@
                             </a>
                         </li>
                         <li class="nav-item" <?= $_SESSION['Level'] == 0 ? 'hidden' : NULL ?>>
-                            <a href="<?php echo base_url() ?>Report/Monthlyreport/<?= date("Y-m-d") ?>" class="nav-link 
-                                <?php echo $this->router->class . '/' . $this->router->fetch_method() === "Report/Monthlyreport" ? "active" : null; ?>">
-                                <i class="fas fa-chart-bar"></i>
-                                <p>Monthly Report</p>
-                            </a>
-                        </li>
-                        <li class="nav-item" <?= $_SESSION['Level'] == 0 ? 'hidden' : NULL ?>>
 
                             <a href="<?php echo base_url() ?>Booking/Booking_Choose/<?= date("Y-m-d") ?>" class="nav-link 
                             <?php
@@ -69,6 +62,13 @@
                                 <?php echo $this->router->class . '/' . $this->router->fetch_method() === "Booking/Booking_Report" ? "active" : null; ?>">
                                 <i class="fas fa-chart-bar"></i>
                                 <p>Booking Report</p>
+                            </a>
+                        </li>
+                        <li class="nav-item" >
+                            <a href="<?php echo base_url() ?>Report/Monthlyreport/<?= date("Y-m-d") ?>" class="nav-link 
+                                <?php echo $this->router->class . '/' . $this->router->fetch_method() === "Report/Monthlyreport" ? "active" : null; ?>">
+                                <i class="fas fa-chart-bar"></i>
+                                <p>Monthly Report</p>
                             </a>
                         </li>
                         <li class="nav-item" <?= $_SESSION['Level'] == 1 ? 'hidden' : NULL ?>>

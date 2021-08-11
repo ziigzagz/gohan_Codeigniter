@@ -17,7 +17,11 @@ class Setup extends CI_Controller
     }
     public function type($var = null)
     {
-        $this->load->view('css');
+       
+        if (!$this->session->userdata('logged_in')) {
+            header("Refresh:0; url=".base_url()."login");
+        } else {
+ $this->load->view('css');
         $this->load->view('js');
         if ($var == 'maincourse') {
             $data = array(
@@ -56,9 +60,6 @@ class Setup extends CI_Controller
                 'error' => $var
             );
         }
-        if (!$this->session->userdata('logged_in')) {
-            header("Refresh:0; url=".base_url()."login");
-        } else {
             $this->load->view('Setup\setup_page.php', $data);
         }
     }
