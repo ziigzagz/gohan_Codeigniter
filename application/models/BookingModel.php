@@ -248,7 +248,7 @@ class BookingModel extends CI_Model
         $query = $this->db->query(
             "select y from (
                 SELECT [Booking_date],year(Booking_date) as y
-                  FROM [ITDB].[dbo].[TB_GOHAN_BOOKING_FROM_USER]
+                  FROM [TB_GOHAN_BOOKING_FROM_USER]
                   group by Booking_date
                   ) as t
                   group by y"

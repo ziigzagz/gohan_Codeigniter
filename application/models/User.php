@@ -26,13 +26,14 @@ class User extends CI_Model
 
         if (sizeof($query->result()) == 0) {
             $sql = "INSERT INTO TB_GOHAN_MEMBER (Username, Password, Lv) VALUES ('$username','$password',0);";
+
             if (!$this->db->simple_query($sql)) {
                 $error = $this->db->error(); // Has keys 'code' and 'message'
                 return $error['code'];
             }
             return true;
         } else {
-            echo "<pre>";
+  
             if (($query->result()[0]->Lv) == '2') { //  0 is active // 1 is admin // 2 is deleted//
                 $this->db->query(
                     "UPDATE TB_GOHAN_MEMBER SET Lv = 0, Password = '$password' WHERE Username = '$username';"
