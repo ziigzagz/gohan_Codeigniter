@@ -20,7 +20,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <!-- <div class="typewriter col-md-3  mx-auto text-dark">
                             <h1>GOHAN V.2</h1>
                         </div> -->
-                        <img src="images\Logo\ATC-Full.png" alt="No image" srcset="" height="100" class="img-fluid">
+                    
                     </div>
                     <div class="card-body text-center">
                         <form action="Login/checklogin" method="POST">

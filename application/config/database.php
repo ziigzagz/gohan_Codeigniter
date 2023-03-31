@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'  => '',
-	'hostname' => 'DESKTOP-D45AL9V\SQLEXPRESS',
+	'hostname' => 'DESKTOP-13DBL6O',
 	'username' => 'sa',
 	'password' => 'sasql',
 	'database' => 'DEVDB',

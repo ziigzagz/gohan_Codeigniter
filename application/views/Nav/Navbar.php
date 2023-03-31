@@ -10,7 +10,7 @@
 </nav>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <div class="p-3 text-white text-center">
-        <img src="<?php echo base_url() ?>images\Logo\ATC-Full.png" alt="" class="img-fluid">
+       
         <div class="row">
             <div class="col">
                 <h1 class=" mx-auto">
